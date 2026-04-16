@@ -9,12 +9,43 @@ import (
 	"github.com/gogf/gf/v2/os/gfile"
 )
 
+// defaultConfig 首次部署时生成的默认配置（数据库连接为占位符，需通过 /init 页面配置）
+const defaultConfig = `server:
+  address: ":8000"
+  serverRoot: "resource/public"
+  logPath: "resource/log/server"
+  logStdout: true
+  errorStack: true
+  errorLogEnabled: true
+  errorLogPattern: "error-{Ymd}.log"
+  accessLogEnabled: true
+  accessLogPattern: "access-{Ymd}.log"
+
+logger:
+  path: "resource/log/run"
+  file: "{Y-m-d}.log"
+  level: "all"
+  stdout: true
+
+database:
+  default:
+    link: "mysql:root:@tcp(127.0.0.1:3306)/itfeeds?charset=utf8mb4&parseTime=true&loc=Asia%%2FShanghai"
+
+rss:
+  enabled: true
+  crons:
+    - "0 0 8-21 * * *"
+    - "0 30 8-20 * * *"
+  feeds:
+    - "https://www.ithome.com/rss"
+  barkPush: ""
+`
+
 func main() {
-	// 确保 config.yaml 存在，不存在时从 example 复制（首次部署场景）
 	configPath := "manifest/config/config.yaml"
-	examplePath := "manifest/config/config.example.yaml"
-	if !gfile.Exists(configPath) && gfile.Exists(examplePath) {
-		gfile.CopyFile(examplePath, configPath)
+	if !gfile.Exists(configPath) {
+		gfile.Mkdir("manifest/config")
+		gfile.PutContents(configPath, defaultConfig)
 	}
 	cmd.Main.Run(gctx.GetInitCtx())
 }
