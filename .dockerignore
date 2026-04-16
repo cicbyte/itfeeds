@@ -1,0 +1,60 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Node.js
+web/node_modules
+web/dist
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+
+# Build artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+main
+
+# Logs
+*.log
+logs
+
+# Test files
+*_test.go
+testdata
+
+# Documentation
+*.md
+!README.md
+docs
+
+# Temporary files
+tmp
+temp
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Resource files not needed in Docker
+resource/casbin
+resource/rsa
+resource/i18n
+resource/template
+
+# Development files
+hack
+Makefile
+*.mk

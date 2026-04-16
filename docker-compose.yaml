@@ -1,0 +1,21 @@
+services:
+  itfeeds:
+    image: ghcr.io/cicbyte/itfeeds:latest
+    container_name: itfeeds
+    restart: unless-stopped
+    ports:
+      # - "8000:8000"  # 固定端口映射
+      - "8000"         # 随机端口映射，启动后用 docker port itfeeds 8000 查看
+    environment:
+      - TZ=Asia/Shanghai
+      - GO_ENV=production
+    volumes:
+      - ./manifest/config/config.yaml:/app/manifest/config/config.yaml
+      - ./resource/log:/app/resource/log
+    networks:
+      - itfeeds-network
+
+networks:
+  itfeeds-network:
+    driver: bridge
+    name: itfeeds-network

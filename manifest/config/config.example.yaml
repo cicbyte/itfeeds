@@ -1,0 +1,34 @@
+# ITFeeds 配置文件
+# 复制此文件为 config.yaml 并修改相应配置
+
+server:
+  address: ":8000"
+  serverRoot: "resource/public"
+  logPath: "resource/log/server"
+  logStdout: true
+  errorStack: true
+  errorLogEnabled: true
+  errorLogPattern: "error-{Ymd}.log"
+  accessLogEnabled: true
+  accessLogPattern: "access-{Ymd}.log"
+
+logger:
+  path: "resource/log/run"
+  file: "{Y-m-d}.log"
+  level: "all"
+  stdout: true
+
+# 数据库配置
+database:
+  default:
+    link: "mysql:root:password@tcp(127.0.0.1:3306)/itfeeds?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai"
+
+# RSS 同步配置
+rss:
+  enabled: true
+  crons:
+    - "0 0 8-21 * * *"
+    - "0 30 8-20 * * *"
+  feeds:
+    - "https://www.ithome.com/rss"
+  barkPush: ""  # Bark推送key（留空则不推送）
