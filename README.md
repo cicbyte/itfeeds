@@ -57,7 +57,7 @@ cd web && npm run dev
 
 - Go 1.23+
 - Node.js 18+
-- MySQL 5.7+
+- MySQL 5.7+（仅支持 MySQL）
 
 ## 项目结构
 

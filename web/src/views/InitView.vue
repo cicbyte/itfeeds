@@ -90,7 +90,7 @@ async function handleSetup() {
         <h1 class="logo-text">IT<span>Feeds</span></h1>
       </div>
 
-      <p class="init-desc">首次使用需要配置数据库连接</p>
+      <p class="init-desc">首次使用需要配置 MySQL 数据库连接</p>
 
       <!-- 完成状态 -->
       <Result

@@ -47,7 +47,7 @@ RUN apk add --no-cache ca-certificates tzdata curl \
     && echo "Asia/Shanghai" > /etc/timezone
 
 COPY --from=backend-builder /app/main ./
-COPY --from=backend-builder /app/manifest/config/config.yaml ./manifest/config/
+COPY --from=backend-builder /app/manifest/config/config.example.yaml ./manifest/config/
 COPY --from=backend-builder /app/resource/public ./resource/public
 COPY --from=backend-builder /app/resource/sql ./resource/sql
 

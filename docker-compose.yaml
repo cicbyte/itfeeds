@@ -10,7 +10,9 @@ services:
       - TZ=Asia/Shanghai
       - GO_ENV=production
     volumes:
-      - ./manifest/config/config.yaml:/app/manifest/config/config.yaml
+      # 首次启动无需手动创建 config.yaml，通过 /init 页面初始化会自动生成
+      # 如需挂载自定义配置：cp manifest/config/config.example.yaml manifest/config/config.yaml
+      - ./manifest/config:/app/manifest/config
       - ./resource/log:/app/resource/log
     networks:
       - itfeeds-network
